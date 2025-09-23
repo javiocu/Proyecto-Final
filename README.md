@@ -7,7 +7,7 @@ Lo estoy completando poco a poco antes de realizar el qwiklab, de esta forma pue
 ## Funcionalidades Principales
 
 ### Procesamiento de Imágenes
-- [ ] Identificar los nombres de las imágenes que se tienen en la carpeta origen
+- [x] Identificar los nombres de las imágenes que se tienen en la carpeta origen
 - [ ] Convertir archivos .TIF de alta resolución a imágenes JPEG optimizadas
 - [ ] Redimensionar automáticamente las imágenes para web
 - [ ] Mantener calidad visual mientras reduce el tamaño de archivo
