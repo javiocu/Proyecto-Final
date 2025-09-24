@@ -8,10 +8,10 @@ Lo estoy completando poco a poco antes de realizar el qwiklab, de esta forma pue
 
 ### Procesamiento de Imágenes
 - [x] Identificar los nombres de las imágenes que se tienen en la carpeta origen
-- [ ] Convertir archivos .TIF de alta resolución a imágenes JPEG optimizadas
+- [x] Convertir archivos .TIF de alta resolución a imágenes JPEG optimizadas
 - [ ] Redimensionar automáticamente las imágenes para web
 - [ ] Mantener calidad visual mientras reduce el tamaño de archivo
-- [ ] Generar test para comprobar que todo funciona correctamente
+- [x] Generar test para comprobar que todo funciona correctamente
 
 ### Generación de Contenido
 - [ ] Procesar archivos .txt con descripciones de productos

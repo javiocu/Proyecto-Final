@@ -14,28 +14,41 @@ directorio_proy = "/home/javiocu/Proyecto-Final/Proyecto-Final/Imagenes"
 #   - Identificar los nombres de las imágenes que se tienen en la carpeta origen:
 
 def get_images_list():
-    """Método privado para obtener los nombres de todas las imágenes
-    con formato .TIFF.
+    """Obtiene los nombres de todas las imágenes con formato .TIFF del directorio del proyecto.
 
     Returns:
-        class'list': Imagen en formato .JPEG
+        list[str]: Lista de nombres de archivos TIFF encontrados. 
+                  Devuelve lista vacía si no hay archivos o el directorio no existe.
+    
+    Raises:
+        FileNotFoundError: Si el directorio especificado no existe, se captura 
+                          internamente y se devuelve lista vacía.
     """
     try:
         todas_las_imagenes = []
         todas_los_archivos = os.listdir(directorio_proy)
         for archivo in todas_los_archivos:
-            if re.search(r"\w+\.tiff$", archivo):
+            if re.search(r"\w+\.tiff$", archivo, re.IGNORECASE):
                 todas_las_imagenes.append(archivo)
         return todas_las_imagenes
-    except FileNotFoundError as errior:
-        print(f"{errior}: Quillo el archivo no está ahí, comprueba la ruta")
+    except FileNotFoundError as error:
+        print(f"{error}: Quillo el archivo no está ahí, comprueba la ruta")
         return []
 
 # - Convertir archivos .TIFF de alta resolución a imágenes JPEG optimizadas
 
 def convertir_a_jpeg(directorio_proy, get_images_list):
-    for nombre in get_images_list():
-        nombrejpg = nombre.split(".")[0] + ".jpeg"
-        imagen = Image.open(os.path.join(directorio_proy, nombre))
-        imagen.convert("RGB").save(os.path.join(directorio_proy, nombrejpg),
-                                   "jpeg")
+    try:
+        for nombre in get_images_list():
+            noencontrado = nombre
+            nombrejpg = nombre.split(".")[0] + ".jpeg"
+            imagen = Image.open(os.path.join(directorio_proy, nombre))
+            imagen.convert("RGB").save(os.path.join(directorio_proy, nombrejpg),
+                                    "jpeg")
+    except FileNotFoundError as error:
+        print(f"{error}: Hay un archivo que no se ha podido encontrar: {noencontrado}")
+        return None
+        
+
+# - Redimensionar automáticamente las imágenes para web
+
