@@ -11,6 +11,7 @@ Lo estoy completando poco a poco antes de realizar el qwiklab, de esta forma pue
 - [ ] Convertir archivos .TIF de alta resolución a imágenes JPEG optimizadas
 - [ ] Redimensionar automáticamente las imágenes para web
 - [ ] Mantener calidad visual mientras reduce el tamaño de archivo
+- [ ] Generar test para comprobar que todo funciona correctamente
 
 ### Generación de Contenido
 - [ ] Procesar archivos .txt con descripciones de productos

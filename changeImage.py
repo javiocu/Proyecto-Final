@@ -5,14 +5,15 @@
 ###     - Format --> .TIFF a .JPEJ
 import os
 import re
+import pytest
 from PIL import Image
 
-directorio_proy = "/home/javiocu/coursera-docker/Module_4/"
+directorio_proy = "/home/javiocu/Proyecto-Final/Proyecto-Final/Imagenes"
 
 # Procesar imagenes
 #   - Identificar los nombres de las imágenes que se tienen en la carpeta origen:
 
-def _get_images_list():
+def get_images_list():
     """Método privado para obtener los nombres de todas las imágenes
     con formato .TIFF.
 
@@ -28,10 +29,13 @@ def _get_images_list():
         return todas_las_imagenes
     except FileNotFoundError as errior:
         print(f"{errior}: Quillo el archivo no está ahí, comprueba la ruta")
+        return []
 
 # - Convertir archivos .TIFF de alta resolución a imágenes JPEG optimizadas
-lista_temporal = ["mango.tiff"]
 
-for imagen in _get_images_list():
-    imagen = Image.open(os.path.join(directorio_proy, imagen))
-    imagen.convert("RGB").save(os.path.join("manguito.jpeg"))
+def convertir_a_jpeg(directorio_proy, get_images_list):
+    for nombre in get_images_list():
+        nombrejpg = nombre.split(".")[0] + ".jpeg"
+        imagen = Image.open(os.path.join(directorio_proy, nombre))
+        imagen.convert("RGB").save(os.path.join(directorio_proy, nombrejpg),
+                                   "jpeg")
