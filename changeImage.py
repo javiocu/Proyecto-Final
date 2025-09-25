@@ -14,7 +14,11 @@ directorio_proy = "/home/javiocu/Proyecto-Final/Proyecto-Final/Imagenes"
 #   - Identificar los nombres de las imágenes que se tienen en la carpeta origen:
 
 def get_images_list():
-    """Obtiene los nombres de todas las imágenes con formato .TIFF del directorio del proyecto.
+    """Captura todas las imágenes con formato TIFF.
+    
+    Recorre el directorio de trabajo en busca de ellas. Busca imágenes formato 
+    .tiff o .TIFF (insensible a mayúsculas o minúsculas) en el directorio 
+    proporcionado en la variable global 'directorio_proy'.
 
     Returns:
         list[str]: Lista de nombres de archivos TIFF encontrados. 
@@ -37,7 +41,26 @@ def get_images_list():
 
 # - Convertir archivos .TIFF de alta resolución a imágenes JPEG optimizadas
 
-def convertir_a_jpeg(directorio_proy, get_images_list):
+def convertir_a_jpeg(get_images_list=get_images_list):
+    """Recibe una lista de nombres de imágenes tipo TIFF que convierte en RGB
+    y pasa a formato JPEG
+    
+    Utiliza el método 'get_images_list' para obtener una lista de imágenes
+    existentes en el directorio proporcionado por la variable global
+    'directorio_proy', y las convierte al 'JPEG' guardando las imágenes salientes
+    en el mismo directorio
+
+    Args:
+        get_images_list (function): Captura todas las imágenes con formato TIFF.
+
+    Returns:
+        None: No devuelve nada, guarda la imagen JPEG en el mismo directorio
+        'directorio_proy'
+    
+    Raises:
+        FileNotFoundError: Devuelve este error cuando alguna de las imágenes no 
+        se detectan en el directorio 'directorio_proy'.        
+    """
     try:
         for nombre in get_images_list():
             noencontrado = nombre
@@ -51,4 +74,5 @@ def convertir_a_jpeg(directorio_proy, get_images_list):
         
 
 # - Redimensionar automáticamente las imágenes para web
+
 
