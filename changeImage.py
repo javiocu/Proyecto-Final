@@ -66,7 +66,7 @@ def convertir_a_jpeg(get_images_list=get_images_list):
             noencontrado = nombre
             nombrejpg = nombre.split(".")[0] + ".jpeg"
             imagen = Image.open(os.path.join(directorio_proy, nombre))
-            imagen.convert("RGB").save(os.path.join(directorio_proy, nombrejpg),
+            imagen.convert("RGB").resize((600, 400)).save(os.path.join(directorio_proy, nombrejpg),
                                     "jpeg")
     except FileNotFoundError as error:
         print(f"{error}: Hay un archivo que no se ha podido encontrar: {noencontrado}")
@@ -74,7 +74,3 @@ def convertir_a_jpeg(get_images_list=get_images_list):
         
 
 # - Redimensionar automáticamente las imágenes para web de 3000x2000 a 600x400
-
-imagen = Image.new("RGB",(3000, 2000), color="Red")
-
-print(imagen.size)
