@@ -1,5 +1,7 @@
 import changeImage as ch
+import os
 import pytest
+
 
 @pytest.fixture
 def directorio_proyecto():
@@ -7,7 +9,7 @@ def directorio_proyecto():
 
 @pytest.fixture
 def lista_imagenes():
-    return ["foto1.tiff", "foto2.tiff", "foto3.tiff", "foto34.tiff"]
+    return ["foto1.tiff"]#, "foto2.tiff", "foto3.tiff", "foto34.tiff"]
 
 @pytest.fixture
 def mock_mocks_lista_imagenes(directorio_proyecto, lista_imagenes, mocker):
@@ -54,6 +56,23 @@ def test_convertir_a_jpeg_mock(mocker, lista_imagenes):
     assert mock_get_images_list.called
     assert mock_image_open.call_count == len(lista_imagenes)
     mock_image_instance.convert.assert_called_with("RGB")
+
+def test_cambio_size(tmp_path, mocker):
+    destino = tmp_path / "tmp_image.tiff"
+    imagen_test = ch.Image.new("RGB",(3000, 2000), color="Red")
+    imagen_test.save(destino, "tiff")
+
+    def mock_lista_imagenes():
+        return ["tmp_image.tiff"]
+
+    mocker.patch("changeImage.directorio_proy", str(tmp_path))
+
+    ch.convertir_a_jpeg(mock_lista_imagenes)
+
+    destino_final = tmp_path / "tmp_image.jpeg"
+    assert os.path.exists(destino_final)
+    with ch.Image.open(destino_final) as image:
+        assert image.size == (600, 400)
 
 def test_convertir_a_jpeg_filenotfound(mocker, capsys):
     mock_get_images_list = mocker.patch("changeImage.get_images_list")

@@ -73,6 +73,8 @@ def convertir_a_jpeg(get_images_list=get_images_list):
         return None
         
 
-# - Redimensionar automáticamente las imágenes para web a 600x400
+# - Redimensionar automáticamente las imágenes para web de 3000x2000 a 600x400
 
+imagen = Image.new("RGB",(3000, 2000), color="Red")
 
+print(imagen.size)

@@ -61,7 +61,7 @@ Lo estoy completando poco a poco antes de realizar el qwiklab, de esta forma pue
 ## Scripts del Proyecto
 
 ### Scripts Principales
-- [x] `changeImage.py` - Procesamiento y conversión de imágenes
+- [x] `changeImage.py` - Procesamiento y conversión de imágenes [EN PROCESO]
 - [ ] `supplier_image_upload.py` - Subida de imágenes al servidor web
 - [ ] `run.py` - Procesamiento y subida de descripciones como JSON  
 - [ ] `reports.py` - Generación de reportes PDF
