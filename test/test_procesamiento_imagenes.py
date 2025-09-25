@@ -23,12 +23,12 @@ def test_get_images_list_mock(mock_mocks_lista_imagenes, lista_imagenes):
     assert all(img.endswith(".tiff") for img in resultado)
     assert mock_mocks_lista_imagenes.called
     
-def test_get_images_list_file_not_found(mocker, directorio_proyecto, capsys):
-    mock_directorio = mocker.patch(directorio_proyecto)
-    mock_directorio.side_effect = FileNotFoundError("No such file or directory")
-    
+def test_get_images_list_file_not_found(mocker, capsys):
+    mock_list_dir = mocker.patch("changeImage.os.listdir")
+    mock_list_dir.side_effect = FileNotFoundError("No such file or directory")
+        
     resultado = ch.get_images_list()
-    assert mock_directorio.called
+    mock_list_dir.assert_called_once()
     assert resultado == []
     assert len(resultado) == 0
     
@@ -36,25 +36,24 @@ def test_get_images_list_file_not_found(mocker, directorio_proyecto, capsys):
     assert "No such file or directory" in captured.out
     assert "Quillo el archivo no está ahí, comprueba la ruta" in captured.out
 
-# def test_convertir_a_jpeg_mock(mocker, lista_imagenes, directorio_proyecto):
-#     # Definimos mocks previos
-#     mock_image_instance = mocker.Mock()
-#     mock_image_rgb = mocker.Mock()
-#     mock_image_instance.convert.return_value = mock_image_rgb
+def test_convertir_a_jpeg_mock(mocker, lista_imagenes):
+    # Definimos mocks previos
+    mock_image_instance = mocker.Mock()
+    mock_image_rgb = mocker.Mock()
+    mock_image_instance.convert.return_value = mock_image_rgb
     
-#     mock_get_images_list = mocker.patch("changeImage.get_images_list")
-#     mock_get_images_list.return_value = lista_imagenes
-#     mock_image_open = mocker.patch("changeImage.Image.open")
-#     mock_image_open.return_value = mock_image_instance
     
-#     directorio = directorio_proyecto
+    mock_get_images_list = mocker.patch("changeImage.get_images_list")
+    mock_get_images_list.return_value = lista_imagenes
+    mock_image_open = mocker.patch("changeImage.Image.open")
+    mock_image_open.return_value = mock_image_instance
+        
+    ch.convertir_a_jpeg(mock_get_images_list)
     
-#     ch.convertir_a_jpeg(directorio, mock_get_images_list)
+    assert mock_image_open.called
+    assert mock_get_images_list.called
+    assert mock_image_open.call_count == len(lista_imagenes)
+    mock_image_instance.convert.assert_called_with("RGB")
+
+# def test_convertir_a_jpeg_filenotfound(mocker, directorio_proyecto, capsys):
     
-#     assert mock_image_open.called
-#     assert mock_get_images_list.called
-#     assert mock_image_open.call_count == len(lista_imagenes)
-    
-#     ch.convertir_a_jpeg(directorio, ["listalitas"])
-    
-#     assert 
