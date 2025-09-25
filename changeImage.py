@@ -73,6 +73,6 @@ def convertir_a_jpeg(get_images_list=get_images_list):
         return None
         
 
-# - Redimensionar automáticamente las imágenes para web
+# - Redimensionar automáticamente las imágenes para web a 600x400
 
 
