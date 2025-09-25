@@ -5,10 +5,9 @@
 ###     - Format --> .TIFF a .JPEJ
 import os
 import re
-import pytest
 from PIL import Image
 
-directorio_proy = "/home/javiocu/Proyecto-Final/Proyecto-Final/Imagenes"
+DIRECTORIO_PROY = "/home/javiocu/Proyecto-Final/Proyecto-Final/Imagenes"
 
 # Procesar imagenes
 #   - Identificar los nombres de las imágenes que se tienen en la carpeta origen:
@@ -18,7 +17,7 @@ def get_images_list():
     
     Recorre el directorio de trabajo en busca de ellas. Busca imágenes formato 
     .tiff o .TIFF (insensible a mayúsculas o minúsculas) en el directorio 
-    proporcionado en la variable global 'directorio_proy'.
+    proporcionado en la variable global 'DIRECTORIO_PROY'.
 
     Returns:
         list[str]: Lista de nombres de archivos TIFF encontrados. 
@@ -30,7 +29,7 @@ def get_images_list():
     """
     try:
         todas_las_imagenes = []
-        todas_los_archivos = os.listdir(directorio_proy)
+        todas_los_archivos = os.listdir(DIRECTORIO_PROY)
         for archivo in todas_los_archivos:
             if re.search(r"\w+\.tiff$", archivo, re.IGNORECASE):
                 todas_las_imagenes.append(archivo)
@@ -65,12 +64,9 @@ def convertir_a_jpeg(get_images_list=get_images_list):
         for nombre in get_images_list():
             noencontrado = nombre
             nombrejpg = nombre.split(".")[0] + ".jpeg"
-            imagen = Image.open(os.path.join(directorio_proy, nombre))
-            imagen.convert("RGB").resize((600, 400)).save(os.path.join(directorio_proy, nombrejpg),
+            imagen = Image.open(os.path.join(DIRECTORIO_PROY, nombre))
+            imagen.convert("RGB").resize((600, 400)).save(os.path.join(DIRECTORIO_PROY, nombrejpg),
                                     "jpeg")
     except FileNotFoundError as error:
         print(f"{error}: Hay un archivo que no se ha podido encontrar: {noencontrado}")
         return None
-        
-
-# - Redimensionar automáticamente las imágenes para web de 3000x2000 a 600x400

@@ -70,7 +70,7 @@ Lo estoy completando poco a poco antes de realizar el qwiklab, de esta forma pue
 - [ ] `health_check.py` - Monitoreo continuo del sistema
 
 ### Configuración y Permisos
-- [x] Shebang line: `#!/usr/bin/env python3` en todos los scripts
+- [ ] Shebang line: `#!/usr/bin/env python3` en todos los scripts
 - [ ] Permisos ejecutables: `chmod +x` para todos los scripts
 - [ ] Importación de librerías necesarias (PIL, requests, ReportLab, psutil, shutil)
 - [ ] Configuración de URLs del servidor web externo

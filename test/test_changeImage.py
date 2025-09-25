@@ -65,7 +65,7 @@ def test_cambio_size(tmp_path, mocker):
     def mock_lista_imagenes():
         return ["tmp_image.tiff"]
 
-    mocker.patch("changeImage.directorio_proy", str(tmp_path))
+    mocker.patch("changeImage.DIRECTORIO_PROY", str(tmp_path))
 
     ch.convertir_a_jpeg(mock_lista_imagenes)
 
