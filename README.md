@@ -7,7 +7,13 @@ Lo estoy completando poco a poco antes de realizar el qwiklab, de esta forma pue
 ## Funcionalidades Principales
 
 ### Procesamiento de Imágenes  
+### Procesamiento de Imágenes  
 - [x] Identificar los nombres de las imágenes que se tienen en la carpeta origen
+- [x] Convertir archivos .TIF de alta resolución a imágenes JPEG optimizadas  
+- [x] Redimensionar automáticamente las imágenes para web (3000x2000 → 600x400 píxeles)
+- [x] Mantener calidad visual mientras reduce el tamaño de archivo
+- [x] Convertir formato RGBA a RGB antes del procesamiento
+- [x] Generar test para comprobar que todo funciona correctamente
 - [x] Convertir archivos .TIF de alta resolución a imágenes JPEG optimizadas  
 - [x] Redimensionar automáticamente las imágenes para web (3000x2000 → 600x400 píxeles)
 - [x] Mantener calidad visual mientras reduce el tamaño de archivo
@@ -20,6 +26,11 @@ Lo estoy completando poco a poco antes de realizar el qwiklab, de esta forma pue
 - [ ] Convertir peso de formato "500 lbs" a entero 500
 - [ ] Crear estructura JSON con campos: name, weight, description, image_name
 - [ ] Procesar todos los archivos de descripción automáticamente
+- [ ] Procesar archivos .txt con descripciones de productos del directorio `supplier-data/descriptions`
+- [ ] Extraer información de peso y nombre de frutas desde archivos de texto
+- [ ] Convertir peso de formato "500 lbs" a entero 500
+- [ ] Crear estructura JSON con campos: name, weight, description, image_name
+- [ ] Procesar todos los archivos de descripción automáticamente
 
 ### Integración con Django
 - [ ] Subir imágenes JPEG procesadas al servidor web fruit catalog
@@ -27,7 +38,16 @@ Lo estoy completando poco a poco antes de realizar el qwiklab, de esta forma pue
 - [ ] Actualizar el catálogo online automáticamente usando POST requests
 - [ ] Crear script `supplier_image_upload.py` para cargar imágenes
 - [ ] Crear script `run.py` para cargar descripciones como JSON
+- [ ] Subir imágenes JPEG procesadas al servidor web fruit catalog
+- [ ] Enviar datos de productos mediante Python requests a `/fruits` endpoint
+- [ ] Actualizar el catálogo online automáticamente usando POST requests
+- [ ] Crear script `supplier_image_upload.py` para cargar imágenes
+- [ ] Crear script `run.py` para cargar descripciones como JSON
 
+### Sistema de Notificaciones  
+- [ ] Generar reportes PDF con nombres y pesos totales de frutas usando ReportLab
+- [ ] Crear script `reports.py` con método generate_report  
+- [ ] Procesar datos de descripción en formato: "name: Apple\nweight: 500 lbs"
 ### Sistema de Notificaciones  
 - [ ] Generar reportes PDF con nombres y pesos totales de frutas usando ReportLab
 - [ ] Crear script `reports.py` con método generate_report  
@@ -43,10 +63,19 @@ Lo estoy completando poco a poco antes de realizar el qwiklab, de esta forma pue
 - [ ] Detectar memoria disponible < 100MB
 - [ ] Verificar resolución de hostname "localhost" a "127.0.0.1"
 - [ ] Enviar alertas por email en caso de errores con subjects específicos
+- [ ] Crear script `health_check.py` para verificaciones cada 60 segundos
+- [ ] Detectar CPU usage > 80% automáticamente  
+- [ ] Detectar espacio en disco < 20% disponible
+- [ ] Detectar memoria disponible < 100MB
+- [ ] Verificar resolución de hostname "localhost" a "127.0.0.1"
+- [ ] Enviar alertas por email en caso de errores con subjects específicos
 
 ## Pruebas Unitarias
 
 ### Tests por Módulo
+- [x] Test para procesamiento de imágenes TIFF (con mocks)
+- [x] Test para conversión a JPEG (casos de éxito y error)
+- [x] Test para manejo de FileNotFoundError
 - [x] Test para procesamiento de imágenes TIFF (con mocks)
 - [x] Test para conversión a JPEG (casos de éxito y error)
 - [x] Test para manejo de FileNotFoundError
@@ -61,7 +90,7 @@ Lo estoy completando poco a poco antes de realizar el qwiklab, de esta forma pue
 ## Scripts del Proyecto
 
 ### Scripts Principales
-- [x] `changeImage.py` - Procesamiento y conversión de imágenes
+- [x] `changeImage.py` - Procesamiento y conversión de imágenes [EN PROCESO]
 - [ ] `supplier_image_upload.py` - Subida de imágenes al servidor web
 - [ ] `run.py` - Procesamiento y subida de descripciones como JSON  
 - [ ] `reports.py` - Generación de reportes PDF
@@ -70,7 +99,7 @@ Lo estoy completando poco a poco antes de realizar el qwiklab, de esta forma pue
 - [ ] `health_check.py` - Monitoreo continuo del sistema
 
 ### Configuración y Permisos
-- [x] Shebang line: `#!/usr/bin/env python3` en todos los scripts
+- [ ] Shebang line: `#!/usr/bin/env python3` en todos los scripts
 - [ ] Permisos ejecutables: `chmod +x` para todos los scripts
 - [ ] Importación de librerías necesarias (PIL, requests, ReportLab, psutil, shutil)
 - [ ] Configuración de URLs del servidor web externo
