@@ -1,11 +1,11 @@
-import changeImage as ch
+import Imagenes.changeImage as ch
 import os
 import pytest
 
 
 @pytest.fixture
 def directorio_proyecto():
-    return "changeImage.os.listdir"
+    return "Imagenes.changeImage.os.listdir"
 
 @pytest.fixture
 def lista_imagenes():
@@ -26,7 +26,7 @@ def test_get_images_list_mock(mock_mocks_lista_imagenes, lista_imagenes):
     assert mock_mocks_lista_imagenes.called
 
 def test_get_images_list_file_not_found(mocker, capsys):
-    mock_list_dir = mocker.patch("changeImage.os.listdir")
+    mock_list_dir = mocker.patch("Imagenes.changeImage.os.listdir")
     mock_list_dir.side_effect = FileNotFoundError("No such file or directory")
 
     resultado = ch.get_images_list()
@@ -45,9 +45,9 @@ def test_convertir_a_jpeg_mock(mocker, lista_imagenes):
     mock_image_instance.convert.return_value = mock_image_rgb
 
 
-    mock_get_images_list = mocker.patch("changeImage.get_images_list")
+    mock_get_images_list = mocker.patch("Imagenes.changeImage.get_images_list")
     mock_get_images_list.return_value = lista_imagenes
-    mock_image_open = mocker.patch("changeImage.Image.open")
+    mock_image_open = mocker.patch("Imagenes.changeImage.Image.open")
     mock_image_open.return_value = mock_image_instance
 
     ch.convertir_a_jpeg(mock_get_images_list)
@@ -65,7 +65,7 @@ def test_cambio_size(tmp_path, mocker):
     def mock_lista_imagenes():
         return ["tmp_image.tiff"]
 
-    mocker.patch("changeImage.DIRECTORIO_PROY", str(tmp_path))
+    mocker.patch("Imagenes.changeImage.DIRECTORIO_PROY", str(tmp_path))
 
     ch.convertir_a_jpeg(mock_lista_imagenes)
 
@@ -75,9 +75,9 @@ def test_cambio_size(tmp_path, mocker):
         assert image.size == (600, 400)
 
 def test_convertir_a_jpeg_filenotfound(mocker, capsys):
-    mock_get_images_list = mocker.patch("changeImage.get_images_list")
+    mock_get_images_list = mocker.patch("Imagenes.changeImage.get_images_list")
     mock_get_images_list.return_value = ["lista.tiff"]
-    mock_image_open = mocker.patch("changeImage.Image.open")
+    mock_image_open = mocker.patch("Imagenes.changeImage.Image.open")
     mock_image_open.side_effect = FileNotFoundError("No such file or directory")
 
     resultado = ch.convertir_a_jpeg(mock_get_images_list)
