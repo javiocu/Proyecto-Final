@@ -9,6 +9,7 @@ requests = "*"
 pillow = "*"
 pytest = "*"
 pytest-mock = "*"
+reportlab = "*"
 
 [dev-packages]
 

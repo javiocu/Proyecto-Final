@@ -1,4 +1,4 @@
-import Imagenes.changeImage as ch
+import Scripts.changeImage as ch
 import os
 import pytest
 

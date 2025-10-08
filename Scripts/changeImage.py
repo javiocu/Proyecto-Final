@@ -9,6 +9,7 @@ from PIL import Image
 
 # Cambiar el directorio del proyecto en función del que se vaya a usar
 DIRECTORIO_PROY = "/home/javiocu/Proyecto-Final/Proyecto-Final/Imagenes"
+#DIRECTORIO_PROY = os.path.expanduser("~/supplier-data/images/")
 
 # Procesar imagenes
 #   - Identificar los nombres de las imágenes que se tienen en la carpeta origen:
@@ -83,3 +84,7 @@ def convertir_a_jpeg(get_images_list=get_images_list):
     except FileNotFoundError as error:
         print(f"{error}: Hay un archivo que no se ha podido encontrar: {noencontrado}")
         return None
+
+
+if __name__ == "__main__":
+    convertir_a_jpeg()
