@@ -2,17 +2,19 @@
 
 ## Script para generar automáticamente un pdf reporte
 
+import os
 import datetime as dt
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
 from reportlab.lib.styles import getSampleStyleSheet
 from reportlab.lib.units import inch
 from reportlab.lib.pagesizes import letter
-from descriptions import generar_json
+from run import generar_json
 from emails import generate_email, send_email
 import health_check
 
-DIRECTORIO = os.path.expanduser("~/supplier-data/descriptions/")
+DIRECTORIO = os.path.expanduser("~/supplier-data/")
 #DIRECTORIO = "/home/javiocu/Proyecto-Final/Proyecto-Final/Descripciones/"
+#DIRECTORIO = "C:/Users/Javi/Documents/GitHub/Proyecto-Final/Scripts/report_mail.py"
 
 def generate_report(title="processed.pdf"):
     pdf = SimpleDocTemplate(title, pagesize = letter)
@@ -43,3 +45,5 @@ def generate_report(title="processed.pdf"):
 
 if __name__ == "__main__":
     generate_report()
+    send_email(generate_email())
+    

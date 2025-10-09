@@ -52,3 +52,7 @@ def check_health():
                                             subject=result,
                                             body="Please check your system and resolve the issue as soon as possible.")
             emails.send_email(message)
+            
+
+if __name__ == "__main__":
+    check_health()
