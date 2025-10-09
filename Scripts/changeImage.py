@@ -8,8 +8,8 @@ import re
 from PIL import Image
 
 # Cambiar el directorio del proyecto en función del que se vaya a usar
-DIRECTORIO_PROY = "/home/javiocu/Proyecto-Final/Proyecto-Final/Imagenes"
-#DIRECTORIO_PROY = os.path.expanduser("~/supplier-data/images/")
+#DIRECTORIO_PROY = "/home/javiocu/Proyecto-Final/Proyecto-Final/Imagenes"
+DIRECTORIO_PROY = os.path.expanduser("~/supplier-data/images/")
 
 # Procesar imagenes
 #   - Identificar los nombres de las imágenes que se tienen en la carpeta origen:

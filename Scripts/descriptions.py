@@ -7,17 +7,17 @@
 import os
 import requests
 
-#DIRECTORIO = os.path.expanduser("~/supplier-data/descriptions/")
-DIRECTORIO = "/home/javiocu/Proyecto-Final/Proyecto-Final/Descripciones/"
+DIRECTORIO = os.path.expanduser("~/supplier-data/descriptions/")
+#DIRECTORIO = "/home/javiocu/Proyecto-Final/Proyecto-Final/Descripciones/"
 lista_archivos = os.listdir(DIRECTORIO)
 
 def generar_json():
-    """Función interna que genera un diccionario de json con la información necesaria
+    """Función que genera un diccionario de json con la información necesaria
     para cada fruta.
     """
     print("Generando el json")
     dic_final = {}
-    lista_frutas_archivos = []
+    lista_archivos = os.listdir(DIRECTORIO)
     for i in lista_archivos:
         with open((DIRECTORIO + i), "r",encoding="UTF-8") as abierto:
             # Generamos el json y lo adjuntamos al diccionario vacío:

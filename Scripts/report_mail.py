@@ -11,8 +11,8 @@ from descriptions import generar_json
 from emails import generate_email, send_email
 import health_check
 
-#DIRECTORIO = os.path.expanduser("~/supplier-data/descriptions/")
-DIRECTORIO = "/home/javiocu/Proyecto-Final/Proyecto-Final/Descripciones/"
+DIRECTORIO = os.path.expanduser("~/supplier-data/descriptions/")
+#DIRECTORIO = "/home/javiocu/Proyecto-Final/Proyecto-Final/Descripciones/"
 
 def generate_report(title="processed.pdf"):
     pdf = SimpleDocTemplate(title, pagesize = letter)
@@ -43,8 +43,3 @@ def generate_report(title="processed.pdf"):
 
 if __name__ == "__main__":
     generate_report()
-    mais = generate_email(attachment="~/Proyecto-Final/Proyecto-Final/processed.pdf")
-    print(health_check.cpu_state())
-    print(health_check.disk_space())
-    print(health_check.localhost_resolved())
-    print(health_check.memory_space())
